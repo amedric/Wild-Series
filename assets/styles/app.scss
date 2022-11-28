@@ -1,0 +1,12 @@
+@import "bootstrap";
+@import "~bootstrap/scss/bootstrap";
+
+
+$primary: darken(#134a7a, 20%);
+$secondary: darken(#428bca, 20%);
+
+body {
+    background-color: $secondary !important;
+}
+
+@import "nav.scss";
