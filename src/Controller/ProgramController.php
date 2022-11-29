@@ -17,4 +17,16 @@ class ProgramController extends AbstractController
      
          ]);
     }
+
+    #[Route('/program/list/{page}', requirements: ['page'=>'\d+'], name: 'program_list')]
+    public function list(int $page = 1): Response
+    {
+        return $this->render('program/list.html.twig', ['page' => $page]);
+    }
+
+    #[Route('/program/{id}', methods: ['GET'], name: 'program_show')]
+    public function show(int $id): Response
+    {
+        return $this->render('program/show.html.twig', ['program' => $id]);
+    }
 }
