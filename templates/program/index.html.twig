@@ -3,16 +3,19 @@
 {% block title %}All programs{% endblock %}
 
 {% block body %}
+    <h1>All the series: </h1>
     <div class="program-index-container">
-        <h1>All the series: </h1>
+
     {% for program in programs %}
+        <div class="programCard">
         <a href="{{ path("program_show", { id: program.id }) }}" class="program-link">
-        <div class="program-index-seriesCard">
+        <div class="programInfo">
             <h2>{{ program.title }}</h2>
             <h4>Category: {{ program.category.name }}</h4>
             <p>{{ program.synopsis }}</p>
         </div>
         </a>
+        </div>
     {% else %}
         No series found.
     {% endfor %}
