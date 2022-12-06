@@ -10,23 +10,24 @@
             <div class="programInfo">
                 <h1 class="mt-0">{{ program.title }}</h1>
                 <p>{{ program.synopsis }}</p>
-                <h4>Season: {{ season.number }}</h4>
+                <h4>Season: {{ season.number }} - {{ season.year }}</h4>
             </div>
+            <a href="{{ path('program_index') }}">
+                Return to list of programs
+            </a>
         </div>
 
         <div class="episodeList">
             {% for episode in episodes %}
+            <a href="{{ path("program_episode_show", { program: program.id, season: season.id, episode: episode.id }) }}" class="category-link">
                 <div class="episodeListInfo">
                     <p>Episode: {{episode.number}}</p>
                     <p>Title: {{episode.title}}</p>
-                    <p>Title: {{episode.synopsis}}</p>
                 </div>
+            </a>
             {% endfor %}
         </div>
 
     </div>
 
-    <a href="{{ path('program_index') }}">
-        Return to list of programs
-    </a>
 {% endblock %}
