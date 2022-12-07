@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div class="newFormContainer">
+        <div class="form">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <button type="submit" class="addBttn">Add category</button>
+            {{ form_end(form) }}
+        </div>
+        <div class="ListContainer">
+            <h1>Programs: </h1>
+            {% for program in programs %}
+                <div class="program-index-seriesCard">
+                    <p>{{ program.title }}</p>
+                </div>
+            {% else %}
+                No programs found.
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

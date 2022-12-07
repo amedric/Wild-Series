@@ -7,6 +7,9 @@
 
         <div class="programSeasonShow" style="background-image: url('{{program.poster}}');background-size: cover">
             {#            <img class="align-self-start mr-3" src="{{program.poster}}" alt="{{ program.title }} poster">#}
+            <a href="{{ path("program_season_show", { program: program.id, season: season.id }) }} " class="back_link">
+                Back
+            </a>
             <div class="programInfo">
                 <h1 class="mt-0">{{ program.title }}</h1>
                 <p>{{ program.synopsis }}</p>
@@ -14,9 +17,7 @@
                 <h4>Episode: {{ episode.number }} - {{ episode.title }}</h4>
                 <p>{{ episode.synopsis }}</p>
             </div>
-            <a href="{{ path("program_season_show", { program: program.id, season: season.id }) }}">
-                Back
-            </a>
+
         </div>
 
     </div>

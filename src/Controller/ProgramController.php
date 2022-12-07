@@ -5,9 +5,9 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 use App\Repository\ProgramRepository;
-//use App\Repository\SeasonRepository;
-//use App\Repository\EpisodeRepository;
+use App\Form\ProgramType;
 use App\Entity\Program;
 use App\Entity\Season;
 use App\Entity\Episode;
@@ -66,21 +66,29 @@ class ProgramController extends AbstractController
         ]);
 
     }
-}
 
-//#[Route('/program/{programId}/seasons/{seasonId}', name: 'program_season_show')]
-////    public function showSeason(int $programId, int $seasonId, ProgramRepository $programRepository, SeasonRepository $seasonRepository, EpisodeRepository $episodeRepository): Response
-//    public function showSeason(Program $program, Season  $season)
-//{
-//    $program = $programRepository->findOneBy(['id' => $programId]);
-//    $season = $seasonRepository->findOneby(['id' => $seasonId],);
-//    $episodes = $season->getEpisodes();
-//
-//    return $this->render('program/season_show.html.twig', [
-//        'program' => $program,
-//        'season' => $season,
-//        'episodes' => $episodes,
-//    ]);
-//
-//}
-//}
+    #[Route('/program/new', name: 'new_program')]
+    public function new(Request $request, ProgramRepository $programRepository): Response
+    {
+        $programs = $programRepository->findAll();
+        $program = new Program();
+        // Create the form, linked with $category
+        $form = $this->createForm(ProgramType::class, $program);
+        // Get data from HTTP request
+        $form->handleRequest($request);
+        // Was the form submitted ?
+        if ($form->isSubmitted()) {
+            $programRepository->save($program, true);
+        }
+        // Render the form (best practice)
+        return $this->renderForm('program/new.html.twig', [
+            'form' => $form,
+            'programs' => $programs,
+        ]);
+        // Alternative
+        // return $this->render('category/new.html.twig', [
+        //   'form' => $form->createView(),
+        // ]);
+
+    }
+}

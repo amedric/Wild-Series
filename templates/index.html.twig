@@ -5,19 +5,31 @@
 
 
 {% block body %}
-
-    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="..." class="d-block w-100" alt="...">
+    <div class="homeContainer">
+    <div class="wrapper">
+        <div class="slideshows">
+            <div class="slideshow slideshow--hero">
+                <div class="slides">
+                    <img src="public/images/programs/andor.jpg" class="slide slide1"></img>
+                    <img src="public/images/programs/blacklist.jpg" class="slide slide2"></img>
+                    <img src="public/images/programs/ringsofpower.jpg" class="slide slide3"></img>
+                </div>
             </div>
-            <div class="carousel-item">
-                <img src="..." class="d-block w-100" alt="...">
+            <div class="slideshow slideshow--contrast slideshow--contrast--before">
+                <div class="slides">
+                    <img src="public/images/programs/andor.jpg" class="slide slide1"></img>
+                    <img src="public/images/programs/blacklist.jpg" class="slide slide2"></img>
+                    <img src="public/images/programs/ringsofpower.jpg" class="slide slide3"></img>
+                </div>
             </div>
-            <div class="carousel-item">
-                <img src="..." class="d-block w-100" alt="...">
+            <div class="slideshow slideshow--contrast slideshow--contrast--after">
+                <div class="slides">
+                    <img src="public/images/programs/andor.jpg" class="slide slide1"></img>
+                    <img src="public/images/programs/blacklist.jpg" class="slide slide2"></img>
+                    <img src="public/images/programs/ringsofpower.jpg" class="slide slide3"></img>
+                </div>
             </div>
         </div>
     </div>
-
+    </div>
 {% endblock %}

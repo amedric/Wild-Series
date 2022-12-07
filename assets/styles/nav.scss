@@ -7,3 +7,8 @@
     text-decoration: none !important;
     color: $secondaryFont !important;
 }
+
+.nav-link:hover {
+    background-color: $secondary !important;
+    color: $primary !important;
+}

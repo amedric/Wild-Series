@@ -7,15 +7,18 @@
     <div class="program-index-container">
 
     {% for program in programs %}
+        <a href="{{ path("program_show", { id: program.id }) }}" class="link">
         <div class="programCard">
-        <a href="{{ path("program_show", { id: program.id }) }}" class="program-link">
-        <div class="programInfo">
+            <div class="ProgramCoverDiv">
+            <img src="{{ program.poster }}" class="programCover" alt="{{ program.title }}"/>
+            </div>
+            <div class="ProgramInfo">
             <h2>{{ program.title }}</h2>
             <h4>Category: {{ program.category.name }}</h4>
-            <p>{{ program.synopsis }}</p>
+            <p class="card-text">{{ program.synopsis }}</p>
+            </div>
         </div>
         </a>
-        </div>
     {% else %}
         No series found.
     {% endfor %}

@@ -1,7 +1,6 @@
 @import "bootstrap";
 @import "~bootstrap/scss/bootstrap";
 
-
 $primary: #F0C808;
 $secondary: #000817;
 $tertiary: #EAEBED;
@@ -10,11 +9,29 @@ $secondaryFont: #002366;
 body {
     background-color: $secondary !important;
     color: $tertiary!important;
-    height: 100%;
-    width: 100%;
+    min-height: 100vh;
+    min-width: 100vw;
+    font-color: $tertiary !important;
 }
 
+.link{
+    text-decoration: none;
+    color: $tertiary !important;
+}
+
+.back_link{
+    text-decoration: none;
+    color: $primary !important;
+}
+
+header{
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+@import "homeIndex.scss";
 @import "nav.scss";
-@import "programIndex.scss";
-@import "programShow.scss";
-@import "seasonShow.scss";
+@import "program.scss";
+@import "newForms.scss";

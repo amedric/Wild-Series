@@ -12,12 +12,15 @@
             <p>{{ program.synopsis }}</p>
             <p>Category: {{ program.category.name }}</p>
         </div>
+        <a href="{{ path('program_index') }} " class="back_link">
+            Return to list of programs
+        </a>
     </div>
 
     <div class="seasonList">
         {% for season in program.seasons %}
             <div class="seasonListInfo">
-                <a href="{{ path("program_season_show", { program: program.id, season: season.id }) }}" class="category-link">
+                <a href="{{ path("program_season_show", { program: program.id, season: season.id }) }}" class="link">
                 <p>Season {{season.number}}</p>
                 </a>
             <p>Year: {{season.year}}</p>
@@ -26,8 +29,4 @@
     </div>
 
     </div>
-
-    <a href="{{ path('program_index') }}">
-        Return to list of programs
-    </a>
 {% endblock %}
