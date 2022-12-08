@@ -3,27 +3,28 @@
 {% block title %}Program: {{ program.title }}{% endblock %}
 
 {% block body %}
-    <div class="programShowContainer">
+    <div class="pageContainer">
 
-    <div class="program">
-        <img class="align-self-start mr-3" src="{{program.poster}}" alt="{{ program.title }} poster">
-        <div class="media-body">
+    <div class="programSection">
+        <img class="programPoster" src="{{program.poster}}" alt="{{ program.title }}">
+        <div class="programInfo">
             <h1 class="mt-0">{{ program.title }}</h1>
             <p>{{ program.synopsis }}</p>
             <p>Category: {{ program.category.name }}</p>
         </div>
-        <a href="{{ path('program_index') }} " class="back_link">
+        <a href="{{ path('program_index') }} " class="link">
             Return to list of programs
         </a>
     </div>
 
-    <div class="seasonList">
+    <div class="listSection">
+        <h1>Seasons:</h1>
         {% for season in program.seasons %}
-            <div class="seasonListInfo">
+            <div class="listInfo">
                 <a href="{{ path("program_season_show", { program: program.id, season: season.id }) }}" class="link">
-                <p>Season {{season.number}}</p>
+                <p class="itemName">Season {{season.number}}</p>
                 </a>
-            <p>Year: {{season.year}}</p>
+            <p class="itemDescription">Year: {{season.year}}</p>
             </div>
         {% endfor %}
     </div>

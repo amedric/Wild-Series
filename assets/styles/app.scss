@@ -8,20 +8,18 @@ $secondaryFont: #002366;
 
 body {
     background-color: $secondary !important;
-    color: $tertiary!important;
-    min-height: 100vh;
-    min-width: 100vw;
-    font-color: $tertiary !important;
+    height: 100%;
+    width: 100%;
 }
 
 .link{
     text-decoration: none;
-    color: $tertiary !important;
+    color: $primary !important;
 }
 
-.back_link{
+.w_link{
     text-decoration: none;
-    color: $primary !important;
+    color: $tertiary !important;
 }
 
 header{

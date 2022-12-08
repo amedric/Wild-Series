@@ -7,15 +7,15 @@
     <div class="program-index-container">
 
     {% for program in programs %}
-        <a href="{{ path("program_show", { id: program.id }) }}" class="link">
-        <div class="programCard">
-            <div class="ProgramCoverDiv">
-            <img src="{{ program.poster }}" class="programCover" alt="{{ program.title }}"/>
+        <a href="{{ path("program_show", { id: program.id }) }}" class="w_link">
+        <div class="indexProgramCard">
+            <div class="indexProgramCoverDiv" style="background-image: url('{{ program.poster }}');background-size: cover">
+{#            <img src="{{ program.poster }}" class="indexProgramCover" alt="{{ program.title }}"/>#}
+                <h3 class="programTitle">{{ program.title }}</h3>
             </div>
-            <div class="ProgramInfo">
-            <h2>{{ program.title }}</h2>
-            <h4>Category: {{ program.category.name }}</h4>
-            <p class="card-text">{{ program.synopsis }}</p>
+            <div class="indexProgramInfo">
+               <h6>Category: {{ program.category.name }}</h6>
+                <p>{{ program.synopsis }}</p>
             </div>
         </div>
         </a>

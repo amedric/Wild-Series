@@ -3,23 +3,53 @@
 {% block title %}{{ program.title }} | Season: {{ season.number }}{% endblock %}
 
 {% block body %}
-    <div class="seasonShowContainer">
 
-        <div class="programSeasonShow" style="background-image: url('{{program.poster}}');background-size: cover">
-            {#            <img class="align-self-start mr-3" src="{{program.poster}}" alt="{{ program.title }} poster">#}
-            <a href="{{ path("program_season_show", { program: program.id, season: season.id }) }} " class="back_link">
-                Back
-            </a>
+    <div class="pageContainer">
+
+        <div class="programSection">
+            <img class="programPoster" src="{{program.poster}}" alt="{{ program.title }}">
             <div class="programInfo">
                 <h1 class="mt-0">{{ program.title }}</h1>
-                <p>{{ program.synopsis }}</p>
                 <h4>Season: {{ season.number }} - {{ season.year }}</h4>
                 <h4>Episode: {{ episode.number }} - {{ episode.title }}</h4>
                 <p>{{ episode.synopsis }}</p>
+                <a href="{{ path("program_show", { id: program.id }) }}" class="link">
+                    Back
+                </a>
             </div>
+        </div>
 
+        <div class="listSection">
+            <h3>Season {{ season.number }} - {{ season.year }}</h3>
+            <h3>Episodes:</h3>
+            {% for episodeL in episodes %}
+                <div class="listInfo">
+                    <a href="{{ path("program_episode_show", { program: program.id, season: season.id, episode: episodeL.id }) }}" class="link">
+                        <p class="itemName">Episode: {{episodeL.number}}</p>
+                    </a>
+                    <p class="itemDescription">Title: {{episodeL.title}}</p>
+                </div>
+            {% endfor %}
         </div>
 
     </div>
+
+{#    <div class="seasonShowContainer">#}
+
+{#        <div class="programSeasonShow">#}
+{#                        <img class="programPoster" src="{{program.poster}}" alt="{{ program.title }}">#}
+{#            <div class="programInfo">#}
+{#                <h1 class="mt-0">{{ program.title }}</h1>#}
+{#                <h4>Season: {{ season.number }} - {{ season.year }}</h4>#}
+{#                <h4>Episode: {{ episode.number }} - {{ episode.title }}</h4>#}
+{#                <p>{{ episode.synopsis }}</p>#}
+{#                <a href="{{ path("program_season_show", { program: program.id, season: season.id }) }} " class="link">#}
+{#                    Back#}
+{#                </a>#}
+{#            </div>#}
+
+{#        </div>#}
+
+{#    </div>#}
 
 {% endblock %}

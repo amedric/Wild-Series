@@ -59,9 +59,11 @@ class ProgramController extends AbstractController
     #[Route('/program/{program}/season/{season}/episode/{episode}', name: 'program_episode_show')]
     public function showEpisode(Program $program, Season $season, Episode $episode):Response
     {
+        $episodes = $season->getEpisodes();
         return $this->render('/program/episode_show.html.twig', [
             'program' => $program,
             'season' => $season,
+            'episodes' => $episodes,
             'episode' => $episode,
         ]);
 

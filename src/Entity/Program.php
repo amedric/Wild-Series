@@ -3,13 +3,15 @@
 namespace App\Entity;
 
 use App\Repository\ProgramRepository;
-use Doctrine\DBAL\Types\Types;
-use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-
+use Doctrine\DBAL\Types\Types;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: ProgramRepository::class)]
+#[UniqueEntity('title')]
 class Program
 {
     #[ORM\Id]
@@ -17,10 +19,16 @@ class Program
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(name: 'title',type: 'string', length: 255, unique: true)]
+    #[Assert\NotBlank(message: 'Field can not be blank')]
+    #[Assert\Length(
+        max: 255,
+        maxMessage: 'The Title {{ value }} is too long, it can be MAXIMUM {{ limit }} characters long.',
+    )]
     private ?string $title = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\NotBlank(message: 'Field can not be blank')]
     private ?string $synopsis = null;
 
     #[ORM\Column(length: 255, nullable: true)]
