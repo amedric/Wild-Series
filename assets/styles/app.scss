@@ -6,10 +6,13 @@ $secondary: #000817;
 $tertiary: #EAEBED;
 $secondaryFont: #002366;
 
+@import "nav.scss";
+
 body {
     background-color: $secondary !important;
     height: 100%;
     width: 100%;
+    color: $tertiary !important;
 }
 
 .link{
@@ -29,7 +32,16 @@ header{
     z-index: 1000;
 }
 
+.messagesDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+table {
+    color: $tertiary !important;
+}
+
 @import "homeIndex.scss";
-@import "nav.scss";
 @import "program.scss";
 @import "newForms.scss";

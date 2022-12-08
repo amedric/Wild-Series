@@ -46,23 +46,15 @@ class  CategoryController extends AbstractController
     {
         $categories = $categoryRepository->findAll();
         $category = new Category();
-        // Create the form, linked with $category
-        $form = $this->createForm(CategoryType::class, $category);
-        // Get data from HTTP request
-        $form->handleRequest($request);
-        // Was the form submitted ?
-        if ($form->isSubmitted() && $form->isValid()) {
+        $form = $this->createForm(CategoryType::class, $category); // Create the form, linked with $category
+        $form->handleRequest($request); // Get data from HTTP request
+        if ($form->isSubmitted() && $form->isValid()) {  // Was the form submitted ?
             $categoryRepository->save($category, true);
         }
-        // Render the form (best practice)
-        return $this->renderForm('category/new.html.twig', [
+
+        return $this->renderForm('category/new.html.twig', [  // Render the form (best practice)
             'form' => $form,
             'categories' => $categories,
         ]);
-        // Alternative
-        // return $this->render('category/new.html.twig', [
-        //   'form' => $form->createView(),
-        // ]);
-
     }
 }

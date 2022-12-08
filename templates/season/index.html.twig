@@ -4,6 +4,7 @@
 
 {% block body %}
     <h1>Season index:</h1>
+    <a href="{{ path('app_season_new') }}"  class="link">Create new Season</a>
 
     <table class="table">
         <thead>
@@ -25,8 +26,8 @@
                 <td>{{ season.description }}</td>
                 <td>{{ season.id }}</td>
                 <td>
-                    <a href="{{ path('app_season_show', {'id': season.id}) }}">show</a>
-                    <a href="{{ path('app_season_edit', {'id': season.id}) }}">edit</a>
+                    <a href="{{ path('app_season_show', {'id': season.id}) }}" class="link">show</a>
+                    <a href="{{ path('app_season_edit', {'id': season.id}) }}" class="link">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -37,5 +38,4 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_season_new') }}">Create new</a>
 {% endblock %}

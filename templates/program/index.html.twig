@@ -1,26 +1,41 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}All programs{% endblock %}
+{% block title %}Program index{% endblock %}
 
 {% block body %}
-    <h1>All the series: </h1>
-    <div class="program-index-container">
+    <h1>Program index:</h1>
+    {#    <a href="{{ path('app_season_new') }}"  class="link">Create new program</a>#}
 
-    {% for program in programs %}
-        <a href="{{ path("program_show", { id: program.id }) }}" class="w_link">
-        <div class="indexProgramCard">
-            <div class="indexProgramCoverDiv" style="background-image: url('{{ program.poster }}');background-size: cover">
-{#            <img src="{{ program.poster }}" class="indexProgramCover" alt="{{ program.title }}"/>#}
-                <h3 class="programTitle">{{ program.title }}</h3>
-            </div>
-            <div class="indexProgramInfo">
-               <h6>Category: {{ program.category.name }}</h6>
-                <p>{{ program.synopsis }}</p>
-            </div>
-        </div>
-        </a>
-    {% else %}
-        No series found.
-    {% endfor %}
-    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Program</th>
+            <th>Synopsis</th>
+            <th>Poster</th>
+{#            <th>Category</th>#}
+            <th>Id</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for program in programs %}
+            <tr>
+                <td>{{ program.title }}</td>
+                <td>{{ program.synopsis }}</td>
+                <td>{{ program.poster }}</td>
+{#                <td>{{ program.category }}</td>#}
+                <td>{{ program.id }}</td>
+                <td>
+                    <a href="{{ path('app_program_show', {'id': program.id}) }}" class="link">show</a>
+                    <a href="{{ path('app_program_edit', {'id': program.id}) }}" class="link">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
 {% endblock %}

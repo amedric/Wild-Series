@@ -10,7 +10,7 @@
           <a class="nav-link active" aria-current="page" href="{{path('app_index')}}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{path('program_index')}}">Programs</a>
+          <a class="nav-link" href="{{path('program_list')}}">Programs</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{{path('category_index')}}">Categories</a>
@@ -22,6 +22,9 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="{{ path("new_program") }}">Add Program</a></li>
             <li><a class="dropdown-item" href="{{ path("new_category") }}">Add Category</a></li>
+            <li><a class="dropdown-item" href="{{ path("app_program_index") }}">Edit Programs</a></li>
+            <li><a class="dropdown-item" href="{{ path("app_season_index") }}">Edit Seasons</a></li>
+            <li><a class="dropdown-item" href="{{ path("app_episode_index") }}">Edit Episodes</a></li>
           </ul>
         </li>
       </ul>

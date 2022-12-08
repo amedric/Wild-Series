@@ -4,27 +4,30 @@
 
 {% block body %}
     <h1>Episode index</h1>
+    <a href="{{ path('app_episode_new') }}" class="link">Create new Episode</a>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>Program</th>
                 <th>Title</th>
-                <th>Number</th>
+                <th>Episode</th>
                 <th>Synopsis</th>
+                <th>Id</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for episode in episodes %}
             <tr>
-                <td>{{ episode.id }}</td>
+                <td>{{ episode.season.program.title }}</td>
                 <td>{{ episode.title }}</td>
                 <td>{{ episode.number }}</td>
                 <td>{{ episode.synopsis }}</td>
+                <td>{{ episode.id }}</td>
                 <td>
-                    <a href="{{ path('app_episode_show', {'id': episode.id}) }}">show</a>
-                    <a href="{{ path('app_episode_edit', {'id': episode.id}) }}">edit</a>
+                    <a href="{{ path('app_episode_show', {'id': episode.id}) }}" class="link">show</a>
+                    <a href="{{ path('app_episode_edit', {'id': episode.id}) }}" class="link">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -35,5 +38,4 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_episode_new') }}">Create new</a>
 {% endblock %}
